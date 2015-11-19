@@ -18,6 +18,15 @@
 
 
 
+# Make sure that the script is not being run as root
+if [[ "$EUID" -eq 0 ]]; then
+    echo -e "\e[31mDon't run this script as root, check installation script. \nExiting.\n\e[0m"
+    exit
+fi
+
+set -e
+set -o pipefail
+
 clear
 echo -e "\e[32mSTEP (1 of 6): Installing Java OpenSSH rsync\e[0m"
 echo -e "\e[32m############################################\n\e[0m"
