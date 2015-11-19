@@ -32,9 +32,15 @@ echo -e "\e[32mSTEP (1 of 6): Installing Java OpenSSH rsync\e[0m"
 echo -e "\e[32m############################################\n\e[0m"
 sleep 2s
 
-# for Debian based systems use 
-#  sudo apt-get install openjdk-*-jdk
-sudo dnf install -y java-*-openjdk-devel openssh rsync
+if [ -f /etc/redhat-release ]; then
+  sudo yum install -y java-*-openjdk-devel openssh rsync
+elif [ -f /etc/debian_version ]; then
+  sudo apt-get install -y default-jdk openssh-server rsync
+else
+  lsb_release -si
+  echo "\e[31mCant use yum or apt-get, check installation script.\n\e[0m"
+  exit
+fi
 
 sleep 1s
 echo -e "\n\n"
