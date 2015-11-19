@@ -15,7 +15,8 @@
 #
 # Online Tutorial
 # https://youtu.be/gWkbPVNER5k
-
+#
+# Ashesh Kumar Singh <user501254@gmail.com>
 
 
 # Make sure that the script is not being run as root
@@ -26,6 +27,8 @@ fi
 
 set -e
 set -o pipefail
+
+
 
 clear
 echo -e "\e[32mSTEP (1 of 6): Installing Java OpenSSH rsync\e[0m"
