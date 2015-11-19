@@ -7,11 +7,11 @@
 # To run:
 #  open terminal,
 #  change directory to this script's location,
-#    cd <link to InstallHadoop.sh parent directory>
+#    $ cd <link to InstallHadoop.sh parent directory>
 #  give execute permission to the script,
-#    sudo chmod +x InstallHadoop.sh
+#    $ sudo chmod +x InstallHadoop.sh
 #  then execute the script,
-#    ./InstallHadoop.sh
+#    $ ./InstallHadoop.sh
 #
 # Online Tutorial
 # https://youtu.be/gWkbPVNER5k
@@ -19,35 +19,37 @@
 
 
 clear
-echo "STEP I: Installing Java OpenSSH rsync"
-echo -e "#####################################\n"
-sleep 3s
+echo -e "\e[32mSTEP (1 of 6): Installing Java OpenSSH rsync\e[0m"
+echo -e "\e[32m############################################\n\e[0m"
+sleep 2s
 
 # for Debian based systems use 
 #  sudo apt-get install openjdk-*-jdk
 sudo dnf install -y java-*-openjdk-devel openssh rsync
 
+sleep 1s
 echo -e "\n\n"
 
 
 
 clear
-echo "STEP II: Setting up SSH keys"
-echo -e "############################\n"
-sleep 3s
+echo -e "\e[32mSTEP  (2 of 6): Setting up SSH keys\e[0m"
+echo -e "\e[32m###################################\n\e[0m"
+sleep 2s
 
 echo -e  'y\n' | ssh-keygen -t rsa -f ~/.ssh/id_rsa -P ''
 cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
 sudo systemctl restart sshd.service
 
+sleep 1s
 echo -e "\n\n"
 
 
 
 clear
-echo "STEP III: Downloading and Extracting Hadoop archive"
-echo -e "###################################################\n"
-sleep 3s
+echo -e "\e[32mSTEP  (3 of 6): Downloading and Extracting Hadoop archive\e[0m"
+echo -e "\e[32m#########################################################\n\e[0m"
+sleep 2s
 
 FILE=$(wget "http://www.eu.apache.org/dist/hadoop/common/stable/" -O - | grep -Po "hadoop-[0-9].[0-9].[0-9].tar.gz" | head -n 1)
 URL=http://www.eu.apache.org/dist/hadoop/common/stable/$FILE
@@ -59,13 +61,14 @@ CURRENT=$USER
 sudo chown -R $CURRENT:$CURRENT /usr/local/hadoop
 ls -las /usr/local
 
+sleep 1s
 echo -e "\n\n"
 
 
 
 clear
-echo "STEP IV: Editing Configuration Files"
-echo -e "####################################\n"
+echo -e "\e[32mSTEP  (4 of 6): Editing Configuration Files\e[0m"
+echo -e "\e[32m###########################################\n\e[0m"
 
 sudo update-alternatives --config java
 cat << 'EOT' >> ~/.bashrc
@@ -140,28 +143,31 @@ cat << EOT >> /usr/local/hadoop/etc/hadoop/hdfs-site.xml
 </configuration>
 EOT
 
+sleep 2s
 echo -e "\n\n"
 
 
 
 clear
-echo "STEP V: Formatting HDFS (namenode directory)"
-echo -e "############################################\n"
-sleep 3s
+echo -e "\e[32mSTEP  (5 of 6): Formatting HDFS (namenode directory)\e[0m"
+echo -e "\e[32m####################################################\n\e[0m"
+sleep 2s
 
 hdfs namenode -format
 
+sleep 1s
 echo -e "\n\n"
 
 
 
 clear
-echo "STEP VI: Strating Hadoop daemons"
-echo -e "################################\n"
-sleep 3s
+echo -e "\e[32mSTEP  (6 of 6): Strating Hadoop daemons\e[0m"
+echo -e "\e[32m#######################################\n\e[0m"
+sleep 2s
 
 start-all.sh
 
+sleep 1s
 echo -e "\n\n"
 
 
