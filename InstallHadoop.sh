@@ -168,7 +168,7 @@ echo -e "\e[32mSTEP  (5 of 6): Formatting HDFS (namenode directory)\e[0m"
 echo -e "\e[32m####################################################\n\e[0m"
 sleep 2s
 
-hdfs namenode -format
+/usr/local/hadoop/bin/hdfs namenode -format
 
 sleep 1s
 echo -e "\n\n"
