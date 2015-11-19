@@ -85,7 +85,7 @@ clear
 echo -e "\e[32mSTEP  (4 of 6): Editing Configuration Files\e[0m"
 echo -e "\e[32m###########################################\n\e[0m"
 
-sudo update-alternatives --config java
+sudo update-alternatives --auto java
 cat << 'EOT' >> ~/.bashrc
 #SET JDK
 export JAVA_HOME=$(readlink -f /usr/bin/java | sed "s:jre/bin/java::")
@@ -102,6 +102,7 @@ export HADOOP_OPTS="-Djava.library.path=$HADOOP_INSTALL/lib"
 #HADOOP VARIABLES END
 EOT
 source ~/.bashrc
+sed -i.bak -e 's/export JAVA_HOME=${JAVA_HOME}/export JAVA_HOME=$(readlink -f \/usr\/bin\/java | sed "s:jre\/bin\/java::")/g' /usr/local/hadoop/etc/hadoop/hadoop-env.sh
 
 sed -n -i.bak '/<configuration>/q;p'  /usr/local/hadoop/etc/hadoop/core-site.xml
 cat << EOT >> /usr/local/hadoop/etc/hadoop/core-site.xml
