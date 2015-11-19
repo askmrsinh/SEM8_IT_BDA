@@ -174,12 +174,21 @@ echo -e "\e[32mSTEP  (6 of 6): Strating Hadoop daemons\e[0m"
 echo -e "\e[32m#######################################\n\e[0m"
 sleep 2s
 
-start-all.sh
+/usr/local/hadoop/sbin/start-dfs.sh
+/usr/local/hadoop/sbin/start-yarn.sh
 
 sleep 1s
 echo -e "\n\n"
 
 
+
+clear
 jps
-google-chrome http://$HOSTNAME:50070
-stop-all.sh
+google-chrome http://$HOSTNAME:50070 || firefox http://$HOSTNAME:50070 || midori http://$HOSTNAME:50070
+echo -e "\n\n"
+
+
+
+echo -e "Stopping Hadoop daemons\n"
+/usr/local/hadoop/sbin/stop-dfs.sh
+/usr/local/hadoop/sbin/stop-yarn.sh
