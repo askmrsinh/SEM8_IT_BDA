@@ -31,8 +31,8 @@ set -o pipefail
 
 
 clear
-echo -e "\e[32mSTEP (1 of 6): Installing Java OpenSSH rsync\e[0m"
-echo -e "\e[32m############################################\n\e[0m"
+echo -e "\e[32mSTEP (1 of 6): Installing Java, OpenSSH, rsync\e[0m"
+echo -e "\e[32m##############################################\n\e[0m"
 sleep 2s
 
 if [ -f /etc/redhat-release ]; then
