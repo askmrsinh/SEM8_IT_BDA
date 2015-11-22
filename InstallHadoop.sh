@@ -41,7 +41,7 @@ elif [ -f /etc/debian_version ]; then
   sudo apt-get install -y default-jdk openssh-server rsync
 else
   lsb_release -si
-  echo "\e[31mCant use yum or apt-get, check installation script.\n\e[0m"
+  echo "\e[31mCan't use yum or apt-get, check installation script.\n\e[0m"
   exit
 fi
 
