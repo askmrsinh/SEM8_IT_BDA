@@ -89,6 +89,7 @@ echo -e "\e[32mSTEP  (4 of 6): Editing Configuration Files\e[0m"
 echo -e "\e[32m###########################################\n\e[0m"
 
 sudo update-alternatives --auto java
+cp ~/.bashrc ~/.bashrc.bak
 cat << 'EOT' >> ~/.bashrc
 #SET JDK
 export JAVA_HOME=$(readlink -f /usr/bin/java | sed "s:jre/bin/java::")
