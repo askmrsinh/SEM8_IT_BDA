@@ -57,7 +57,7 @@ sleep 2s
 
 echo -e  'y\n' | ssh-keygen -t rsa -f ~/.ssh/id_rsa -P ''
 cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
-sudo systemctl restart sshd.service
+sudo systemctl restart sshd.service || sudo service ssh restart
 
 sleep 1s
 echo -e "\n\n"
