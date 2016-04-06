@@ -71,7 +71,7 @@ public class TwoStepMatrixMultiplication {
     public static void main(String[] args) throws Exception {
         Configuration conf = new Configuration();
 
-        Job job = new Job(conf, "MatrixMatrixMultiplicationTwoSteps");
+        Job job = Job.getInstance(conf, "MatrixMatrixMultiplicationTwoStep");
         job.setJarByClass(TwoStepMatrixMultiplication.class);
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(Text.class);
