@@ -1,0 +1,4 @@
+[submodule "BD_STTP_2016"]
+	path = BD_STTP_2016
+	url = https://github.com/user501254/BD_STTP_2016
+	branch = testing
